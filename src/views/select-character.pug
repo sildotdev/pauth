@@ -1,0 +1,63 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Select Character
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      .character-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      .character-card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 200px;
+        text-align: center;
+      }
+      .character-card img {
+        max-width: 100%;
+        height: auto;
+      }
+      .select-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .select-button:hover {
+        background-color: #45a049;
+      }
+
+  body
+    h1 Select Your Character
+    .character-list
+      each character in characters
+        .character-card
+          img(src=character.avatar, alt=character.name)
+          h3= character.name
+          p Level: #{character.level}
+          form(action=`/webclient/select-character?returnUrl=${returnUrl}`, method="POST")
+            input(type="hidden", name="characterId", value=character.id)
+            input(type="hidden", name="returnUrl", value=returnUrl)
+            button.select-button(type="submit") Select
+
+    if characters.length === 0
+      p You don't have any characters yet. Please create a character first.
