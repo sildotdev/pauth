@@ -29,7 +29,6 @@ router.post('/server-auth', (req, res) => {
     const serverToken = jwt.sign({
         type: 'server',
         serverId: serverId,
-        permissions: ['create_challenge', 'verify_player_token']
     }, SECRET_KEY, { expiresIn: '1d' }); // Token valid for 1 day
 
     res.json({ serverToken });

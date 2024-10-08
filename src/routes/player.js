@@ -34,10 +34,14 @@ router.post('/create-challenge', (req, res) => {
 
     const authUrl = `${HOST}/player/auth/${steamId}/${characterId}/${challenge}`;
     res.json({ authUrl });
+
+    console.log(`Challenge created for ${steamId}: ${challenge}`);
 });
 
 // Handle the authentication
-router.get('/auth/:steamId/:characterId/:challenge', async (req, res) => {
+router.post('/auth/:steamId/:characterId/:challenge', async (req, res) => {
+    console.log('Player is requesting authentication');
+
     const { steamId, characterId, challenge } = req.params;
     const storedChallenge = challenges.get(steamId);
 
@@ -50,6 +54,7 @@ router.get('/auth/:steamId/:characterId/:challenge', async (req, res) => {
 
     // Here, you would typically verify the Steam authentication
     // For this example, we'll assume it's successful
+    // TODO: Ensure client is on the server, validate the IP address, etc.
 
     const Characters = await defineCharacters();
     const character = await Characters.findOne({ where: { id: characterId, steamid: steamId } });

@@ -21,7 +21,7 @@ app.set('view engine', 'pug');
 app.set('views', './src/views');
 // json parser
 const corsOptions = {
-    origin: ['http://localhost:3000', 'http://localhost:3030', 'http://localhost:8080', 'https://papi-staging.palominorp.com'],
+    origin: ['http://loopback.gmod:3000', 'http://loopback.gmod:3030', 'http://loopback.gmod:8080', 'http://localhost:3000', 'http://localhost:3030', 'http://localhost:8080', 'https://papi-staging.palominorp.com'],
     credentials: true,
 }
 app.use(cors(corsOptions));
