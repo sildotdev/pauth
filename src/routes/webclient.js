@@ -142,7 +142,7 @@ router.post('/select-character', async (req, res) => {
     res.cookie('auth_token', token, { 
         httpOnly: true, 
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'Lax',
+        sameSite: 'None',
         maxAge: 24 * 60 * 60 * 1000,
         domain: '.palominorp.com'
     });
