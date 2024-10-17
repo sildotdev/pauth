@@ -79,14 +79,16 @@ router.get('/select-character', async (req, res) => {
 
     console.log(user);
 
+    const steamid = user.id
+
     // If steamid 76561198072551027 doesnt have a character, create one:
     const character
-    = await Characters.findOne({ where: { steamid: '76561198072551027' } });
+    = await Characters.findOne({ where: { steamid: steamid } });
     
     if (!character) {
       await Characters.create({
         name: 'Test Character',
-        steamid: '76561198072551027',
+        steamid: steamid,
       })
     }
 
@@ -142,7 +144,7 @@ router.post('/select-character', async (req, res) => {
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'Lax',
         maxAge: 24 * 60 * 60 * 1000,
-        // domain: '.palominorp.com'
+        domain: '.palominorp.com'
     });
 
     const finalReturnUrl = returnUrl || '/webclient/protected';
