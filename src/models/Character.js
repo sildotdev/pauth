@@ -53,10 +53,6 @@ const defineCharacters = async () => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    vehicles: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
   }, {
     tableName: 'ix_characters',
     timestamps: false,
