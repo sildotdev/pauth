@@ -13,15 +13,26 @@ if (!process.env.NODE_ENV) {
 const app = express();
 
 // Configuration
-const SECRET_KEY = 'your-jwt-secret-key';
+const SECRET_KEY = 'aABA7q9lloZR331FtT9q8jWbJQWXQt7F';
 const STEAM_API_KEY = 'C1FE80472F4FA401E9BF38E195EB8677';
-const HOST = 'http://localhost:3000';
+const HOST = 'https://auth.palominorp.com';
 
 app.set('view engine', 'pug');
 app.set('views', './src/views');
 // json parser
 const corsOptions = {
-    origin: ['http://loopback.gmod:3000', 'http://loopback.gmod:3030', 'http://loopback.gmod:8080', 'http://localhost:3000', 'http://localhost:3030', 'http://localhost:8080', 'https://papi-staging.palominorp.com'],
+    origin: [
+        'http://loopback.gmod:3000',
+        'http://loopback.gmod:3030',
+        'http://loopback.gmod:8080',
+        'http://localhost:3000',
+        'http://localhost:3030',
+        'http://localhost:8080',
+        'https://papi-staging.palominorp.com',
+        'https://papi.palominorp.com',
+        'https://pal-os.palomino.gg',
+        'https://auth.palominorp.com',
+    ],
     credentials: true,
 }
 app.use(cors(corsOptions));
@@ -32,7 +43,7 @@ app.use(cookieParser());
 
 // Set up session
 app.use(session({
-    secret: 'your-session-secret',
+    secret: 'zZdaAFVFMbqC32Q01P16L9Fr',
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -63,7 +74,13 @@ const webClientRouter = initializeWebClientRouter({
     secretKey: SECRET_KEY,
     host: HOST,
     steamApiKey: STEAM_API_KEY,
-    allowedRedirectDomains: ['http://localhost:3000', 'http://localhost:3030', 'https://papi-staging.palominorp.com']
+    allowedRedirectDomains: [
+        'http://localhost:3000',
+        'http://localhost:3030',
+        'https://papi.palominorp.com',
+        'https://pal-os.palomino.gg',
+        'https://auth.palominorp.com',
+    ]
 });
 app.use('/webclient', webClientRouter);
 

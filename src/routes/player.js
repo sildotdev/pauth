@@ -14,6 +14,11 @@ function initializeRouter(config) {
     return router;
 }
 
+// @TODO: we're still not validating a lot of things. we should double check:
+// - the steamId is valid
+// - characterId belongs to the steamId
+// and more, across other routes too.
+
 // Create a challenge
 router.post('/create-challenge', (req, res) => {
     // const token = req.headers.authorization.split(' ')[1];
