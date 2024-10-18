@@ -30,7 +30,7 @@ const corsOptions = {
         'http://localhost:8080',
         'https://papi-staging.palominorp.com',
         'https://papi.palominorp.com',
-        'https://pal-os.palomino.gg',
+        'https://pal-os.palominorp.com',
         'https://auth.palominorp.com',
     ],
     credentials: true,
